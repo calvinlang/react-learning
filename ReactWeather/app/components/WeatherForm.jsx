@@ -6,16 +6,21 @@ var WeatherForm = React.createClass({
 	getInitialState: function() {
 		return {
 			location: '',
-			temp: ''
+			temp: '',
+			isLoading: false
 		}
 	},
 	handleSearch: function () {
 		var location = this.refs.location.value;
+		this.setState({
+			isLoading: true
+		});
 		var that = this;
 		openWeatherMap.getTemp(location).then(function (temp) {
 		  that.setState({
 		    location: location,
-		    temp: temp
+		    temp: temp,
+		    isLoading: false
 		  });
 		}, function (errorMessage) {
 		    alert(errorMessage);
@@ -28,7 +33,7 @@ var WeatherForm = React.createClass({
 					<input ref="location" type="text" />
 					<button>Check Weather</button>
 				</form>
-				<WeatherMessage location={this.state.location} temp={this.state.temp}/>
+				<WeatherMessage isLoading={this.state.isLoading} location={this.state.location} temp={this.state.temp}/>
 				
 			</div>
 		)

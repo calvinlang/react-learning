@@ -25533,16 +25533,21 @@
 		getInitialState: function getInitialState() {
 			return {
 				location: '',
-				temp: ''
+				temp: '',
+				isLoading: false
 			};
 		},
 		handleSearch: function handleSearch() {
 			var location = this.refs.location.value;
+			this.setState({
+				isLoading: true
+			});
 			var that = this;
 			openWeatherMap.getTemp(location).then(function (temp) {
 				that.setState({
 					location: location,
-					temp: temp
+					temp: temp,
+					isLoading: false
 				});
 			}, function (errorMessage) {
 				alert(errorMessage);
@@ -25562,7 +25567,7 @@
 						'Check Weather'
 					)
 				),
-				React.createElement(WeatherMessage, { location: this.state.location, temp: this.state.temp })
+				React.createElement(WeatherMessage, { isLoading: this.state.isLoading, location: this.state.location, temp: this.state.temp })
 			);
 		}
 	});
@@ -25583,12 +25588,16 @@
 		render: function render() {
 			var location = this.props.location;
 			var temp = this.props.temp;
-			if (location) {
+			if (temp) {
 				var message = "Currently it is " + temp + " Celsius in " + location;
+			}
+			if (this.props.isLoading) {
+				var message1 = "Loading";
 			}
 			return React.createElement(
 				"span",
 				null,
+				message1,
 				message
 			);
 		}
