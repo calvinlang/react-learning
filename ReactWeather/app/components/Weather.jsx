@@ -7,11 +7,10 @@ var Weather = React.createClass({
 			<div>
 				<h3>Weather Component</h3>
 				<WeatherForm/>
-				
 			</div>
 		)
 	}
 })
 
-module.exports = Weather;
+module.exports = Weather; 
 

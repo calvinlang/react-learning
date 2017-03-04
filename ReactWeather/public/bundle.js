@@ -25550,7 +25550,7 @@
 					isLoading: false
 				});
 			}, function (errorMessage) {
-				alert(errorMessage);
+				console.log(errorMessage);
 			});
 		},
 		render: function render() {

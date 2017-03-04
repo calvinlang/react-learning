@@ -23,7 +23,7 @@ var WeatherForm = React.createClass({
 		    isLoading: false
 		  });
 		}, function (errorMessage) {
-		    alert(errorMessage);
+		    console.log(errorMessage);
 		});
 	},
 	render: function() {

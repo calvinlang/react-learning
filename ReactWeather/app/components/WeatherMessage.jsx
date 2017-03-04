@@ -14,8 +14,7 @@ var WeatherMessage = React.createClass({
 			<span>
 				{message1}
 				{message}
-				
-			</ span>
+			</span>
 		)
 	}
 })
