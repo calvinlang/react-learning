@@ -6,10 +6,8 @@ var Weather = React.createClass({
 	getInitialState: function() {
 		var location = this.props.location.query.location;
 		if (location && location.length > 0) {
-			console.log("IF STATEMENT RUNNING");
 			return ({
 				location: location,
-				newmessage: "HI CALVIN"
 			});
 		};
 		return({});

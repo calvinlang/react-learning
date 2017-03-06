@@ -16,7 +16,11 @@ var WeatherForm = React.createClass({
 		}
 	},
 	componentDidMount: function(){
-		this.handleSearch();	
+		var location = this.props.location
+		if (location && location.length > 1) {
+			this.handleSearch(location);
+			window.location.hash = '#/';
+		};
 	},
 	detectSearchInputType: function() {
 		// Prioritizes that if there is getWeather Query
@@ -25,9 +29,8 @@ var WeatherForm = React.createClass({
 		}
 		return this.props.location
 	},
-	handleSearch: function () {
-		var location = this.detectSearchInputType();
-		if (!location) return;
+	handleSearch: function (location) {
+		debugger;
 		this.setState({
 			isLoading: true
 		});
