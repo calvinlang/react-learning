@@ -4,14 +4,30 @@ var openWeatherMap = require('openWeatherMap');
 
 var WeatherForm = React.createClass({
 	getInitialState: function() {
+		if (this.props.location) {
+			var location = this.props.location
+		} else {
+			var location = '';
+		}
 		return {
-			location: '',
+			location: location,
 			temp: '',
 			isLoading: false
 		}
 	},
+	componentDidMount: function(){
+		this.handleSearch();	
+	},
+	detectSearchInputType: function() {
+		// Prioritizes that if there is getWeather Query
+		if (this.refs.location.value) {
+			return this.refs.location.value; 
+		}
+		return this.props.location
+	},
 	handleSearch: function () {
-		var location = this.refs.location.value;
+		var location = this.detectSearchInputType();
+		if (!location) return;
 		this.setState({
 			isLoading: true
 		});
@@ -31,7 +47,7 @@ var WeatherForm = React.createClass({
 			<div>
 				<form onSubmit={this.handleSearch}>
 					<input ref="location" type="text" />
-					<button>Check Weather</button>
+					<button className="button" >Check Weather</button>
 				</form>
 				<WeatherMessage isLoading={this.state.isLoading} location={this.state.location} temp={this.state.temp}/>
 				
