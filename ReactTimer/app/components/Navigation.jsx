@@ -11,10 +11,10 @@ var Navigation = () => {
             HERE
           </li>
           <li>
-            <IndexLink to="/" activeClassName="active-link">Timer</IndexLink>
+            <IndexLink to="/" activeClassName="active-link">Navigation 1</IndexLink>
           </li>
           <li>
-            <Link to="/" activeClassName="active-link">Countdown</Link>
+            <Link to="/" activeClassName="active-link">Navigation 2</Link>
           </li>
         </ul>
       </div>
